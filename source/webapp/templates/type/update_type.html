@@ -1,0 +1,12 @@
+
+{% extends 'base.html' %}
+{% block title %}Refresh Type{% endblock %}
+{% block menu %}
+    <li><a href="{% url 'webapp:type_view'%}">Тип</a></li>
+{% endblock %}
+{% block content %}
+    <h1>Редактировать Тип</h1>
+    <form method="POST" action="{% url 'webapp:type_update' type.pk %}">
+        {% include 'partial/tracker_form.html' with button_text="Редактировать" %}
+    </form>
+{% endblock %}

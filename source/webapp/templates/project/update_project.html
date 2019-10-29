@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Status{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'webapp:project_add' %}">Добавить Проект</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Status:</h1>
+    <hr/>
+{#    {% for project in projects %}#}
+{#        <h2>{{ project.project }}</h2>#}
+{#        <li><a href="{% url 'project_delete' project.pk %}">Delete</a></li>#}
+{#        <li><a href="{% url 'project_update' project.pk %}">Refresh</a></li>#}
+{#        <hr/>#}
+    <form action="{% url 'webapp:project_update' project.pk %}" method="post">
+        {% include 'partial/tracker_form.html' with button_text="Редактировать"%}
+    </form>
+{#    {% endfor %}#}
+{% endblock %}

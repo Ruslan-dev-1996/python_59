@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Refresh{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'webapp:tracker_view' issue.pk %}">Подробнее</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Редактировать</h1>
+    <form method="POST" action="{% url 'webapp:tracker_update' issue.pk %}">
+        {% include 'partial/tracker_form.html' with button_text="Редактировать" %}
+    </form>
+{% endblock %}

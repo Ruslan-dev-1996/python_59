@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}type{% endblock %}
+
+
+{% block menu %}
+    <li><a href="{% url 'webapp:type_add' %}">Добавить Тип</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Тип</h1>
+    <hr/>
+    {% for type in types %}
+        <h2 class="card-type">{{ type.type }}</h2>
+         <li><a href="{% url 'webapp:type_delete' type.pk %}" class="myButton">Удалить</a></li>
+         <li><a href="{% url 'webapp:type_update' type.pk %}" class="myButtons">Редактор</a></li>
+        <hr/>
+    {% endfor %}
+{% endblock %}

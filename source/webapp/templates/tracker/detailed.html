@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ tracker.summary }}{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'webapp:tracker_update' tracker.pk %}">Редактор</a></li>
+    <li><a href="{% url 'webapp:tracker_delete' tracker.pk %}">Удалить</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1> {{ tracker.summary }}</h1>
+    <p>имя: {{ tracker.summary }} </p>
+    <p>тип: {{ tracker.type }} </p>
+    <p>cтатус: {{ tracker.status|default_if_none:'Без категории' }}</p>
+    <p> дата и время: {{ tracker.created_at|date:'d.m.Y H:i:s' }}</p>
+    <div class="pre">описание: {{ tracker.description }}</div>
+{% endblock %}

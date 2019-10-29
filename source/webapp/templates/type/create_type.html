@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Type{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'webapp:type_view' %}">Типы</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Добавить Тип</h1>
+    <form method="POST" action="{% url 'webapp:type_add' %}">
+        {% include 'partial/tracker_form.html' with button_text="Добавить" %}
+    </form>
+{% endblock %}

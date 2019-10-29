@@ -1,0 +1,26 @@
+
+{% extends 'base.html' %}
+
+{% block title %}{{ tracker.summary }}{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'webapp:project_update' project.pk %}">Редактировать</a></li>
+    <li><a href="{% url 'webapp:project_delete' project.pk %}">Удалить</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1> Просмотр Пректа </h1>
+    <hr>
+
+    <p>имя проекта: {{ project.name }}</p>
+    <p>описание проекта: {{ project.description }}</p>
+    <p>дата и время: {{ project.created_at|date:'d.m.Y H:i:s' }}</p>
+     <hr>
+     {% for tracker in project.tracker_project.all %}
+       <p>имя задачи: {{ tracker.summary }}</p>
+       <p>описание задачи: {{ tracker.description }}</p>
+       <p>статус : {{ tracker.status }}</p>
+       <p>тип: {{ tracker.type }}</p>
+         <hr>
+     {% endfor %}
+{% endblock %}

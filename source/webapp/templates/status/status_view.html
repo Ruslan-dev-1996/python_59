@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Status{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'webapp:status_add' %}">Add Status</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Status:</h1>
+    <hr/>
+    {% for status in statuses %}
+        <h2>{{ status.name }}</h2>
+        <li><a href="{% url 'webapp:status_delete' status.pk %}">Delete</a></li>
+        <li><a href="{% url 'webapp:status_update' status.pk %}">Refresh</a></li>
+        <hr/>
+    {% endfor %}
+{% endblock %}

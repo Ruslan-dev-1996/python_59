@@ -1,0 +1,17 @@
+
+{% extends 'base.html' %}
+
+{% block title %}Delete Task{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'webapp:tracker_view' issue.pk %}">More</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Вы действительно хотите удалить? "{{ issue }}"?</h1>
+    <form method="POST" action="{% url 'webapp:tracker_delete' issue.pk %}" class="text-center">
+        {% csrf_token %}
+          <p><input type="submit" value="Удалить" class="myButton"></p>
+          <a  href="{% url 'webapp:index' %}" class="myButtons">Отменить</a></p>
+    </form>
+{% endblock %}

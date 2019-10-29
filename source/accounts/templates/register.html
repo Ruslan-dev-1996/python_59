@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>SignUp</h1>
+    <form method="post" action="{% url 'accounts:register'%}" class="text-center">
+            {% include 'partial/tracker_form.html' with button_text='Register' %}
+    </form>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Status{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'webapp:project_add' %}">Добавить Проект</a></li>
+{#    <div class="search ">#}
+{#      {% include 'partial/simple_search.html' %}#}
+{#    </div>#}
+{% endblock %}
+
+{% block content %}
+
+    <h1 >Проект</h1>
+    <hr/>
+    {% for project in projects %}
+        <a href="{% url 'webapp:detail_view' project.pk %}"><h2 class="card-text ">{{ project.name }}</h2></a>
+
+        <li><a href="{% url 'webapp:project_delete' project.pk %}" class="myButton">Удалить</a></li>
+        <li><a href="{% url 'webapp:project_update' project.pk %}" class="myButtons">Редактор</a></li>
+
+
+        <hr/>
+    {% endfor %}
+{% endblock %}
