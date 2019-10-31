@@ -43,11 +43,11 @@ class SignUpForm(forms.Form):
             raise ValidationError('Password do not match', code='password_do_not_match')
         return self.cleaned_data
 
-    def name_l_f(self):
-        super().clean()
-        first_name_1 = self.cleaned_data.get('first_name')
-        last_name_2 = self.cleaned_data.get('last_name')
-        print(first_name_1 != last_name_2)
-        if first_name_1 != last_name_2:
-            raise ValidationError('Password do not match', code='password_do_not_match')
-        return self.cleaned_data
+
+class UserChangeForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+
+
