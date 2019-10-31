@@ -19,7 +19,9 @@
         <ul class="menu">
              <li><a href="{% url 'webapp:index' %}">Главный</a></li>
              {% if request.user.is_authenticated %}
-                 <li>privet, {{ user }}</li>
+                 <li>
+                     <a href="{% url 'accounts:user_detail' request.user.pk %}">{{ request.user }}</a>
+                 </li>
                  <li><a href="{% url 'accounts:logout' %}">log out</a></li>
              {% else %}
                  <li><a href="{% url 'accounts:login' %}">Логин</a></li>
