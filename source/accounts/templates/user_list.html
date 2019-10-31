@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail{% endblock %}
+
+
+{% block content %}
+
+    <h1 >Users</h1>
+    <hr/>
+    {% for user in users %}
+        <a href="{% url 'accounts:user_detail' user.pk %}"><h2 class="card-text ">{{ user.username }}</h2></a>
+
+
+
+        <hr/>
+    {% endfor %}
+{% endblock %}

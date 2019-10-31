@@ -4,12 +4,12 @@ from django.http import HttpResponseForbidden
 from django.shortcuts import redirect, render, get_object_or_404
 from django.contrib.auth.models import User
 from django.urls import reverse
-from django.views.generic import  UpdateView, DetailView
+from django.views.generic import UpdateView, DetailView, ListView
 
 from accounts.models import Token
 from main.settings import HOST_NAME
 
-from accounts.forms import SignUpForm, UserChangeForm
+from accounts.forms import SignUpForm, UserChangeForm, UserChangePasswordForm
 
 
 def login_view(request):
@@ -94,3 +94,15 @@ class UserChangeView(UserPassesTestMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('accounts:user_detail', kwargs={'pk': self.object.pk})
+
+class UserChangePasswordView(UserChangeView):
+    template_name = 'user_change_password.html'
+    form_class = UserChangePasswordForm
+
+
+
+class UserListView(ListView):
+    template_name = 'user_list.html'
+    model = User
+    context_object_name = 'users'
+
