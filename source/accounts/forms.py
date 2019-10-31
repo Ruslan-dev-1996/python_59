@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
 
@@ -12,10 +13,7 @@ class SignUpForm(forms.Form):
                                widget=forms.PasswordInput)
     first_name = forms.CharField(max_length=100, required=True, label="First name")
     last_name = forms.CharField(max_length=100, required=True, label="Last name")
-
     email = forms.EmailField(required=True, label='Email')
-
-
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
@@ -32,7 +30,6 @@ class SignUpForm(forms.Form):
             raise ValidationError('Email already registered',  code='email_registered')
         except User.DoesNotExist:
             return email
-
 
     def clean(self):
         super().clean()
